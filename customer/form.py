@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from .models import CustomerModel
 
 
 class RegistrationForm(forms.ModelForm):
@@ -9,7 +10,7 @@ class RegistrationForm(forms.ModelForm):
     ))
 
     class Meta:
-        model = User
+        model = CustomerModel
         fields = ['username', 'email', 'password']
         widgets = {
             'password': forms.PasswordInput()

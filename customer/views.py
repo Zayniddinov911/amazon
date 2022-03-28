@@ -25,7 +25,7 @@ class CreateAccountView(View):
             user.set_password(form.cleaned_data['password'])
             user.save()
 
-            return redirect('')
+            return redirect('acc:login')
         return render(request, 'customer/registration.html', context={
             'form': form
         })
@@ -49,15 +49,16 @@ class LoginView(View):
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if not user is None:
                 login(request, user)
+                print('asdasdasdas')
 
-                form.add_error('password', 'Incorrect Login or Password!')
+                # form.add_error('password', 'Incorrect Login or Password!')
+                return redirect('home')
             return render(request, 'customer/login.html', context={
                 'form': form
             })
 
 
-class LogoutView(View):
-
-    def get(self, request):
-        logout(request)
-        return redirect('acc:login')
+def logout_view(request):
+    print('asdasdas')
+    logout(request)
+    return redirect('acc:login')

@@ -1,11 +1,62 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+
+    <link rel="stylesheet" href="{% static "main/bootstrap/css/bootstrap.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "main/icons/font/bootstrap-icons.css" %} " type="text/css">
+    <link rel="stylesheet" href="{% static "main/css/main.css" %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static "slick/slick.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "slick/slick-theme.css" %}">
 </head>
 <body>
-<h1>Registration page Here</h1>
+<div class="d-flex justify-content-center">
+    <img src="{% static 'img/amz.png' %}" alt="amazon logo!" class="" style="width: 80px; height: 80px;">
+</div>
+<div class="login-form d-flex flex-column text-center justify-content-center  w-25" style="
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+    margin-left: 720px;">
+
+    <h1>Create account</h1>
+    <form action="" class="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+{#        <p style="font-size: 14px;"><b>Your name</b></p>#}
+{#        <input type="text" class="input-box">#}
+{#        <p style="font-size: 14px;"><b>Mobile number or email</b></p>#}
+{#        <input type="email" class="input-box">#}
+{#        <p style="font-size: 14px;"><b>Password</b></p>#}
+{#        <input type="password" class="input-box">#}
+{#        <p style="font-size: 14px;"><b>Re-enter password</b></p>#}
+{#        <input type="password" class="input-box">#}
+        <div>
+            <button type="submit" class="btn btn-warning" style="
+            width: 215px;
+            height: 35px;
+            margin-top: 12px;
+            border: 1px solid yellow">
+                Continue
+            </button>
+        </div>
+        <p style="font-size: 12px; margin-top: 15px;">By creating an account, you agree to Amazon's
+            <a href=""><br>Conditions of Use</a> and
+            <a href="">Privacy Notice.</a>
+        </p>
+        <p><a href="" style="font-size: 12px;">Need help?</a></p>
+    </form>
+</div>
+
 <h2></h2>
+
+
+<script src="{% static "main/js/jquery-3.6.0.min.js" %}"></script>
+<script src="{% static "main/bootstrap/js/bootstrap.bundle.js" %}"></script>
+<script type="text/javascript" src="{% static "slick/slick.min.js" %}"></script>
+<script type="text/javascript" src="{% static "slick/slick.js" %}"></script>
 </body>
 </html>
