@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 
 class CategoryModel(models.Model):
@@ -53,3 +54,62 @@ class ProductModel(models.Model):
         related_name='products',
         verbose_name=_('category')
     )
+    color = models.ManyToManyField(
+        ColorModel,
+        related_name='products',
+        verbose_name=_('color')
+    )
+    size = models.ManyToManyField(
+        SizeModel,
+        related_name='products',
+        verbose_name=_('size')
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def is_new(self):
+        return (timezone.now() - self.created_at).days >= 3
+
+    def is_discount(self):
+        return self.discount != 0
+
+    # def get_related(self):
+    #     return ProductModel.objects.filter()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'product'
+        verbose_name_plural = 'products'
+
+
+class ReviewModel(models.Model):
+    product = models.ForeignKey(
+        ProductModel,
+        on_delete=models.CASCADE,
+        related_name='reviews',
+        verbose_name=_('review')
+    )
+    name = models.CharField(max_length=65, verbose_name=_('name'))
+    comment = models.CharField(max_length=255, verbose_name=_('comment'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+    country = models.CharField(max_length=50, verbose_name=_('country'))
+
+    class Meta:
+        verbose_name = 'review'
+        verbose_name_plural = 'reviews'
+
+    def __str__(self):
+        return self.name
+
+
+class ProductImageModel(models.Model):
+    product = models.ForeignKey(ProductModel, on_delete=models.CASCADE, related_name='product_image')
+    image = models.ImageField(upload_to='product_image/')
+
+    def __str__(self):
+        return self.product.name
+
+    class Meta:
+        verbose_name = 'product image'
+        verbose_name_plural = 'product images'
