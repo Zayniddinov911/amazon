@@ -48,6 +48,7 @@ class ProductModel(models.Model):
     discount = models.PositiveIntegerField(default=0, verbose_name=_('discount'))
     short_description = models.TextField(verbose_name=_('short description'))
     long_description = models.TextField(verbose_name=_('long description'))
+    is_active = models.BooleanField(default=True, verbose_name=_('is active'))
     category = models.ForeignKey(
         CategoryModel,
         on_delete=models.RESTRICT,
@@ -62,7 +63,9 @@ class ProductModel(models.Model):
     size = models.ManyToManyField(
         SizeModel,
         related_name='products',
-        verbose_name=_('size')
+        verbose_name=_('size'),
+        null=True,
+        blank=True,
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
 

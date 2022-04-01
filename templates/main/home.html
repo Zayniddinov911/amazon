@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 {#{% load static %}#}
 {% block content %}
-    <h1>Category Products here</h1>
     <div class="container">
         <div class="row">
             {% for obj in object_list %}
-            <div class="col-3 ml-5" style="background: #fff; overflow: hidden;">
+            <div class="col-3 ml-5 mt-5" style="background: #fff; overflow: hidden;">
                 <div>
                     <h2 style="font-size: 20px; padding-top: 10px;"><strong>{{ obj.name }}</strong></h2>
                 </div>
-                <div style="width: 250px; height: 303px;">
-                    {{ obj.image.url }}
+                <div style="width: 250px; height: 303px;" class="img-fluid">
+                    <img src="{{ obj.image.url }}" alt="category image here" style="width: 250px; height: 300px;">
                 </div>
                 <div>
                     <a href="{% url 'products:product' %}" style="font-size: 13px;">Shop now</a>
