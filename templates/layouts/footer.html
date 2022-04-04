@@ -1,13 +1,9 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
-    <div>
+ <div>
         <footer>
             <div class="above_footer text-center" style="border: 1px solid">
                 <p class="" style="font-size: 13px;">See personalized recommendations</p>
-                <button class="btn btn-warning" style="width: 250px; height: 35px;"><b>Sign in</b></button>
-                <p style="font-size: 13px;">New customer? <a href="">Start here.</a></p>
+                <a class="btn btn-warning" style="width: 250px; height: 35px;" href="{% url 'acc:login' %}"><b>Sign in</b></a>
+                <p style="font-size: 13px;">New customer? <a href="{% url 'acc:register' %}">Start here.</a></p>
             </div>
         </footer>
         <footer style="position:sticky; bottom:0; width:100%; height:550px; background: #232F3E;">
@@ -74,4 +70,3 @@
             </div>
         </footer>
     </div>
-{% endblock %}

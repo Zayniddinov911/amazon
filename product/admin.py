@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 from .forms import ColorModelForm
-# from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TranslationAdmin
 from django.utils.safestring import mark_safe
 
 
@@ -17,7 +17,7 @@ class ProductImageStackedInline(admin.StackedInline):
 
 
 @admin.register(ProductModel)
-class ProductModelAdmin(admin.ModelAdmin):
+class ProductModelAdmin(TranslationAdmin):
     list_display = ['id', 'name', 'price']
     list_display_links = ['id', 'name']
     search_fields = ['name']
