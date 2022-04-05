@@ -5,20 +5,19 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="card" style="width: 18rem;">
-                    <img src="" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary">Go</a>
-                    </div>
+            <div class="col-3 mt-5" style="background: #fff; overflow: hidden;">
+                <div>
+                    <h2 style="font-size: 20px; padding-top: 10px;"><strong></strong></h2>
+                </div>
+                <div style="width: 250px; height: 303px;" class="img-fluid">
+                    <img src="" alt="category image here" style="width: 250px; height: 300px;">
+                </div>
+                <div>
+                    <a href="{% url 'products:details' %}" style="font-size: 13px;">Explore</a>
                 </div>
             </div>
         </div>
     </div>
-    <div style="">
-        <h3>side bare here</h3>
-        <h3>side bare here</h3>
-        <h3>side bare here</h3>
-    </div>
+
 {% endblock %}
 
