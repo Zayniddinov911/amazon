@@ -5,17 +5,19 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-3 mt-5" style="background: #fff; overflow: hidden;">
-                <div>
-                    <h2 style="font-size: 20px; padding-top: 10px;"><strong></strong></h2>
+            {% for object in products %}
+                <div class="col-3 mt-5 mx-1 ml-5" style="background: #fff; overflow: hidden;">
+                        <div>
+                            <h2 style="font-size: 20px; padding-top: 10px;"><strong>{{ object.name }}</strong></h2>
+                        </div>
+                        <div style="width: 250px; height: 303px;" class="img-fluid">
+                            <img src="{{ object.image.url }}" alt="category image here" style="width: 250px; height: 300px;">
+                        </div>
+                        <div>
+                            <a href="{% url 'products:details' pk=object.id %}" style="font-size: 13px;">Explore</a>
+                        </div>
                 </div>
-                <div style="width: 250px; height: 303px;" class="img-fluid">
-                    <img src="" alt="category image here" style="width: 250px; height: 300px;">
-                </div>
-                <div>
-                    <a href="{% url 'products:details' %}" style="font-size: 13px;">Explore</a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 
