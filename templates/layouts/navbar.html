@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item text-center text-white" style="font-size: 12px;">
-                <a class="nav-link" href="#" style="color: white;">Deliver to <br><b>Uzbekistan</b></a>
+                <a class="nav-link" href="#" style="color: white;">{% trans 'Deliver to ' %}<br><b>Uzbekistan</b></a>
             </li>
             <div class="mt-2" style="">
                 <form class="form-inline">
@@ -24,7 +24,7 @@
                                         <a class="nav-link dropdown-toggle text-black-50" href="#" id="navbarDropdown"
                                            role="button"
                                            data-toggle="dropdown">
-                                            <span>All</span>
+                                            <span>{% trans 'All' %}</span>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             {% for obj in object_list %}
@@ -53,29 +53,31 @@
                     {% get_available_languages as all_lan %}
                     {% for lan in all_lan %}
                         {% if lan.0 != current_lan %}
-                        <a class="dropdown-item" href="/{{ lan.0 }}/">
-                            {{ lan.0 }}
-                        </a>
+                            <a class="dropdown-item" href="/{{ lan.0 }}/">
+                                {{ lan.0 }}
+                            </a>
                         {% endif %}
                     {% endfor %}
                 </div>
             </li>
             <li class="nav-item mt-1 ml-3">
-                <a class="nav-link" href="{% url 'acc:login' %}" style="color: white; font-size: 12px;">Hello,
+                <a class="nav-link" href="{% url 'acc:login' %}"
+                   style="color: white; font-size: 12px;">{% trans 'Hello' %},
                     {% if request.user.is_authenticated %}
                         {{ user.username }}
                     {% else %}
-                        Sign in
+                        {% trans 'Sign in' %}
                     {% endif %}
-                    <br><strong>Accounts & Lists</strong></a>
+                    <br><strong>{% trans 'Accounts & Lists' %}</strong></a>
                 {{ request.customer }}
             </li>
             <li class="nav-item mt-1 ml-3">
-                <a class="nav-link" href="" style="color: white; font-size: 12px;">Returns <br><strong>& Orders</strong></a>
+                <a class="nav-link" href=""
+                   style="color: white; font-size: 12px;">{% trans 'Returns ' %}<br><strong>& {% trans 'Orders' %}</strong></a>
             </li>
             <li class="nav-item mt-1 ml-3">
-                                <a class="nav-link bi bi-bag-plus" href="#">
-                                </a>
+                <a class="nav-link bi bi-bag-plus" href="#">
+                </a>
             </li>
         </ul>
     </div>
@@ -83,10 +85,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 40px;">
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
+        <a href="{% url 'products:home' %}">{% trans 'Home' %}</a>
         <a href="#">Services</a>
         <a href="#">Clients</a>
         <a href="#">Contact</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'acc:logout' %}">{% trans 'Sign Out' %}</a>
+        {% else %}
+            <a href="{% url 'acc:login' %}">{% trans 'Sign in' %}</a>
+        {% endif %}
+        <a href="{% url 'acc:register' %}">{% trans 'Register' %}</a>
     </div>
     <span style="font-size: 16px;cursor: pointer; color: white;" onclick="openNav()">&#9776; All</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
@@ -94,19 +102,19 @@
     </button>
     <ul class="navbar-nav" id="hello">
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; font-size: 15px;">Today's deals</a>
+            <a class="nav-link" href="#" style="color: white; font-size: 15px;">{% trans 'Todays deals' %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; font-size: 15px;">Customer Service</a>
+            <a class="nav-link" href="#" style="color: white; font-size: 15px;">{% trans 'Customer Service' %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; font-size: 15px;">Registry</a>
+            <a class="nav-link" href="#" style="color: white; font-size: 15px;">{% trans 'Registry' %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; font-size: 15px;">Gift Cards</a>
+            <a class="nav-link" href="#" style="color: white; font-size: 15px;">{% trans 'Gift Cards' %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; font-size: 15px;">Sell</a>
+            <a class="nav-link" href="#" style="color: white; font-size: 15px;">{% trans 'Sell' %}</a>
         </li>
     </ul>
 </nav>

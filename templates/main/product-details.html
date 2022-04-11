@@ -1,7 +1,52 @@
-{% include 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-
 {% block content %}
+    <div class="d-flex justify-content-around">
+        <div>product Images will be here</div>
+        <div>
+            <h4>Product Details</h4>
+            <h4>Product Details</h4>
+            <h4>Product Details</h4>
+            <h4>Product Details</h4>
+            <h4>Product Details</h4>
+            <h4>Product Details</h4>
+            <h4>Product Details</h4>
+            <h4>Product Details</h4>
+            <h4>Product Details</h4>
 
+        </div>
+        <div>
+            <div class="mt-5" style="width: 242px; height: 186px; border: 1px; background: white; border-radius: 15px;">
+                <div class="mt-2">
+                    <p style="font-size: 14px;" class="text-center"><span
+                            style="color: red;">Temporarily out of stock</span> <br>We are working hard to be back in
+                        stock
+                        as soon as possible
+                    </p>
+                    <div class="text-center">
+                        <a href="" class="" style="font-size: 12px;">Deliver to Uzbekistan</a>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <a href="" class="btn btn-light" style="width: 170px;">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <p class="ml-3">Share:</p>
+                <div class="ml-3 text-center">
+                    <a href="">
+                        <img src="{% static 'img/fcb.png' %}" alt="share on facebook" class="">
+                    </a>
+                    <a href="">
+                        <img src="{% static 'img/twit.png' %}" alt="" class="">
+                    </a>
+                    <a href="">
+                        <img src="{% static 'img/insta.png' %}" alt="" class="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

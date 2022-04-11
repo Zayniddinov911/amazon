@@ -6,16 +6,22 @@
     <div class="container">
         <div class="row">
             {% for object in products %}
-                <div class="col-3 mt-5 mx-1 ml-5" style="background: #fff; overflow: hidden;">
-                        <div>
-                            <h2 style="font-size: 20px; padding-top: 10px;"><strong>{{ object.name }}</strong></h2>
-                        </div>
-                        <div style="width: 250px; height: 303px;" class="img-fluid">
-                            <img src="{{ object.image.url }}" alt="category image here" style="width: 250px; height: 300px;">
-                        </div>
-                        <div>
-                            <a href="{% url 'products:details' pk=object.id %}" style="font-size: 13px;">Explore</a>
-                        </div>
+                <div class="col-3 mt-5 mx-1 ml-5 mb-4" style="background: #fff; overflow: hidden;">
+
+                    <div style="width: 250px; height: 303px;" class="img-fluid">
+                        <a href="{% url 'products:details' pk=object.pk %}">
+                            <img src="{{ object.image.url }}" alt="category image here"
+                                 style="width: 250px; height: 300px;">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{% url 'products:details' pk=object.pk %}"
+                           style="font-size: 13px; text-decoration: none; color: black;">
+                            <div>
+                                <h2 style="font-size: 20px; padding-top: 10px;"><strong>{{ object.name }}</strong></h2>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             {% endfor %}
         </div>

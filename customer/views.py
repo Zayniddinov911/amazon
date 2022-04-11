@@ -52,13 +52,12 @@ class LoginView(View):
                 print('asdasdasdas')
 
                 # form.add_error('password', 'Incorrect Login or Password!')
-                return redirect('home')
+                return redirect('products:home')
             return render(request, 'customer/login.html', context={
                 'form': form
             })
 
 
 def logout_view(request):
-    print('asdasdas')
     logout(request)
     return redirect('acc:login')
