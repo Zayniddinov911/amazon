@@ -32,7 +32,7 @@ class ProductView(ListView):
         qs = ProductModel.objects.all()
         q = self.request.GET.get('q')
         if q:
-            qs = qs.filter(name__containes=q)
+            qs = qs.filter(name__contains=q)
             return qs
 
         cat = self.request.GET.get('cat')
@@ -50,7 +50,12 @@ class ProductView(ListView):
         return qs
 
 
-class ProductDetailView(ListView):
+class ProductDetailView(DetailView):
     template_name = 'main/product-details.html'
     model = ProductModel
     context_object_name = "details"
+
+
+class SearchResultView(ListView):
+    template_name = 'main/search_result.html'
+    model = ProductModel

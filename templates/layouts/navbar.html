@@ -35,11 +35,11 @@
                                     </li>
                                 </span>
                         </div>
-                        <input type="search" class="form-control" size="120" placeholder="">
-                        <a href="#">
+                        <form action="{% url 'products:product' %}">
+                            <input name="q" value="{{ request.GET.q }}" type="search" class="form-control" size="120" placeholder="">
                             <button class="btn btn-outline-success bi bi-search"
                                     style="background: orange; height: 38px;"></button>
-                        </a>
+                        </form>
                     </div>
                 </form>
             </div>
