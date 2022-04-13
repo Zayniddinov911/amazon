@@ -36,7 +36,8 @@
                                 </span>
                         </div>
                         <form action="{% url 'products:product' %}">
-                            <input name="q" value="{{ request.GET.q }}" type="search" class="form-control" size="120" placeholder="">
+                            <input name="q" value="{{ request.GET.q }}" type="search" class="form-control" size="120"
+                                   placeholder="">
                             <button class="btn btn-outline-success bi bi-search"
                                     style="background: orange; height: 38px;"></button>
                         </form>
@@ -94,7 +95,10 @@
         {% else %}
             <a href="{% url 'acc:login' %}">{% trans 'Sign in' %}</a>
         {% endif %}
-        <a href="{% url 'acc:register' %}">{% trans 'Register' %}</a>
+        {% if not user.is_authenticated %}
+            <a href="{% url 'acc:register' %}">{% trans 'Register' %}</a>
+        {% else %}
+        {% endif %}
     </div>
     <span style="font-size: 16px;cursor: pointer; color: white;" onclick="openNav()">&#9776; All</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">

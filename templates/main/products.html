@@ -6,15 +6,17 @@
     <style>
         .sidenav {
             margin-top: 105px;
-            height: 900px;
+            {#margin-bottom: 94px;#}
+            height: 1440px;
             width: 200px;
-            position: fixed;
+            position: absolute;
             z-index: 1;
             top: 0;
             left: 0;
             background-color: #fff;
             overflow-x: hidden;
             padding-top: 20px;
+            border-right: 1px solid black;
         }
 
         .sidenav a {
@@ -25,9 +27,10 @@
             display: block;
         }
 
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
+        {#.sidenav a:hover {#}
+        {#    color: #f1f1f1;#}
+        {
+        #}#}
 
         .main {
             margin-left: 200px; /* Same as the width of the sidenav */
@@ -44,10 +47,11 @@
         }
     </style>
     <div class="sidenav">
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <p style="margin-left: 30px; margin-top: 10px;"><b>Categories</b></p>
+        {% for category in categories %}
+            <a href="?cat={{ category.pk }}" style="font-size: 14px;">{{ category }}</a>
+        {% endfor %}
+         <p style="margin-left: 30px; margin-top: 10px;"><b>Price</b></p>
     </div>
 
     <div class="container">
