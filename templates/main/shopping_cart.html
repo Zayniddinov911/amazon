@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load extra %}
+
+{% block content %}
+    <div style="width: 916px; height: 362px; background: white;">
+        {%for object in object_list%}
+            {{object.name}}
+        {%endfor%}
+    </div>
+{% endblock %}

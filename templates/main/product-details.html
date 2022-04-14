@@ -1,35 +1,65 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load extra %}
+
+{% block extra_css %}
+    <style>
+    </style>
+{% endblock %}
 
 {% block content %}
     <div class="d-flex justify-content-around">
         <div>
-            <img src="{{ object.image.url }}" alt="image" style="width: 450px; height: 450px; margin-left: 70px;" class="mt-3 ">
+            <img src="{{ object.image.url }}" alt="image" style="width: 450px; height: 450px; margin-left: 70px;"
+                 class="mt-3 ">
         </div>
         <div class="ml-5">
             <h3 class="mt-3 w-75 text-center" style="">{{ object.name }}</h3>
-{#            <a href="" style="font-size: 12px;">Visit the Amazon Renewed Store</a>#}
+            {#            <a href="" style="font-size: 12px;">Visit the Amazon Renewed Store</a>#}
             <a href="" style="font-size: 12px; margin-left: 25px;">21 rating</a> |
             <a href="" style="font-size: 12px;">16 answered questions</a>
-            <p class="w-75 text-center" >{{ object.short_description }}</p>
+            <p class="w-75 text-center">{{ object.short_description }}</p>
             <div>
                 <h5>
                     {% if object.is_discount %}
-                        <p>Price: </p>{{ object.discount_price }}
+                        <p>Price: </p>$ {{ object.discount_price }}
                         <del>{{ object.price }}</del>
                     {% else %}
-                        {{ object.price }}
+                        <p>Price: </p>$ {{ object.price }}
                     {% endif %}
                 </h5>
             </div>
             <div>
-                <p style="margin-left: 25px; margin-top: 50px;"><b>Model name</b> {{ object.price }}</p>
-                <p style="margin-left: 25px;"><b>Wireless Carrier</b></p>
-
+                <p style="margin-left: 25px; margin-top: 50px;"><b>Model names</b> Macbook, iPhone</p>
+                <p style="margin-left: 25px;"><b>Brand</b> Apple</p>
+                <p style="margin-left: 25px;"><b>Brand</b> Apple</p>
+                <p style="margin-left: 25px;"><b>Specific Uses For Product</b> Business</p>
+                <p style="margin-left: 25px;"><b>Operating System</b> Mac OS, iOS</p>
+                <p style="margin-left: 25px;"><b>CPU Manufacturer</b> Intel</p>
+                <p style="margin-left: 25px;"><b>Connectivity Technology</b> Bluetooth, Wi-Fi, USB</p>
+                <p style="margin-left: 25px;"><b>Color</b> {{ object.color }}</p>
+                <p style="margin-left: 25px; margin-top: 50px; font-size: 18px;"><b>About this item</b>
+                <ul style="list-style-type:disc">
+                    <li>this phone is unlocked and compatible with any carrier of choice on GSM and CDMA networks (e.g.
+                        AT&T, T-Mobile, Sprint, Verizon, US Cellular, Cricket, Metro, Tracfone, Mint Mobile, etc.).
+                    </li>
+                    <li>Tested for battery health and guaranteed to come with a battery that exceeds 90% of original
+                        capacity.
+                    </li>
+                    <li>Backed by a one-year satisfaction guarantee, with free access to Amazon’s Technical Support team
+                        throughout the full year and ability to replace or return the product if it does not work as
+                        expected.
+                    </li>
+                    <li>this phone is unlocked and compatible with any carrier of choice on GSM and CDMA networks (e.g.
+                        AT&T, T-Mobile, Sprint, Verizon, US Cellular, Cricket, Metro, Tracfone, Mint Mobile, etc.).
+                    </li>
+                </ul>
+                </p>
             </div>
         </div>
         <div>
-            <div class="mt-5" style="width: 242px; height: 186px; border: 1px; background: white; border-radius: 10px; margin-right: 50px;">
+            <div class="mt-5"
+                 style="width: 242px; height: 186px; border: 1px; background: white; border-radius: 10px; margin-right: 50px;">
                 <div class="mt-2">
                     <p style="font-size: 14px;" class="text-center"><span
                             style="color: red;">Temporarily out of stock</span> <br>We are working hard to be back in
@@ -41,7 +71,11 @@
                     </div>
                     <hr>
                     <div class="text-center">
-                        <a href="" class="btn btn-light" style="width: 170px;">Add to cart</a>
+                        {% if not request|is_cart:object %}
+                        <a href="{% url 'product:add_cart' pk=object.pk %}?next={{ request.path }}" class="btn btn-outline-danger add-cart" style="width: 170px;">Add to cart</a>
+                        {% else %}
+                        <a href="{% url 'product:add_cart' pk=object.pk %}?next={{ request.path }}" class="btn btn-danger" style="width: 170px;">Remove from cart</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -59,6 +93,57 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+    <hr>
+    <div class="" style="margin-left: 80px;">
+        <p style="color: #CC6600; margin-left: 20px;">Special offers and product promotions</p>
+        <ul>
+            <li>
+                <a href="">Create your FREE Amazon Business account</a> to save up to 10% with <b>Business-only
+                prices</b> and free shipping.
+                <a href="">Register today</a>
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <div style="margin-left: 100px;">
+        <h4><b>Have a question?</b></h4>
+        <p style="font-size: 12px;">Find answers in product info, Q&A, reviews</p>
+        <input type="text" placeholder="Type your question or keyword" size="90">
+    </div>
+    <div class="text-center mt-5">
+        <h4><b>What is Amazon Renewed Premium?</b></h4>
+        <p>Amazon Renewed Premium is your trusted destination for products that have been refurbished by the original
+            manufacturer or Amazon directly, certified to look and function like new and offered with a full year
+            warranty and deluxe packaging.</p>
+    </div>
+    <div class="d-flex justify-content-around mt-5">
+        <div class="guarantee text-center">
+            <img src="{% static 'img/gr.png' %}" alt="">
+            <h5 class="mt-3"><b>Guaranteed by Amazon</b></h5>
+            <p>Full year of technical support and troubleshooting.<br>
+                Eligible for replacement or refund within 1-year of<br> receipt, if you are not satisfied.</p>
+        </div>
+        <div class="include text-center">
+            <img src="{% static 'img/inc.png' %}" alt="">
+            <h5 class="mt-3"><b>What's Included?</b></h5>
+            <p>Your Device<br>
+                UL/MFi certified accessories<br>
+                Deluxe packaging with test certificate<br>
+                SIM tray removal tool</p>
+        </div>
+        <div class="hq text-center">
+            <img src="{% static 'img/q.png' %}" alt="">
+            <h5 class="mt-3"><b>High-Quality Product</b></h5>
+            <p>Professionally inspected,<br>
+                tested and cleaned to work and look like new,<br>
+                with a minimum 90% battery health.</p>
+        </div>
+        <div class="bet-plan text-center">
+            <img src="{% static 'img/leaf.png' %}" alt="">
+            <h5 class="mt-3"><b>Better for the Planet</b></h5>
+            <p>Your Amazon Renewed purchase extends the<br> lifetime of this product and reduces electronic waste</p>
         </div>
     </div>
 {% endblock %}

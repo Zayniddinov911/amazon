@@ -52,3 +52,11 @@ class SizeModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'name']
     list_display_links = ['id', 'name']
     search_fields = ['name']
+
+
+@admin.register(ReviewModel)
+class ReviewModelAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'comment']
+    list_display_links = ['id', 'name', 'comment']
+    search_fields = ['name']
+

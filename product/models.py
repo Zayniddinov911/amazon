@@ -40,6 +40,18 @@ class ColorModel(models.Model):
         verbose_name_plural = 'colors'
 
 
+class BrandModel(models.Model):
+    name = models.CharField(max_length=244, verbose_name=_('name'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'brand'
+        verbose_name_plural = 'brands'
+
+
 class ProductModel(models.Model):
     name = models.CharField(max_length=255, verbose_name=_('name'))
     image = models.ImageField(upload_to='products', verbose_name=_('image'))
@@ -64,7 +76,6 @@ class ProductModel(models.Model):
         SizeModel,
         related_name='products',
         verbose_name=_('size'),
-        null=True,
         blank=True,
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
@@ -84,6 +95,11 @@ class ProductModel(models.Model):
     class Meta:
         verbose_name = 'product'
         verbose_name_plural = 'products'
+
+    @staticmethod
+    def get_cart_info(cart):
+        return ProductModel.objects.filter(id__in=cart)
+
 
 
 class ReviewModel(models.Model):

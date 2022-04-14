@@ -43,10 +43,6 @@ class ProductView(ListView):
         if size:
             qs = qs.filter(size__id=size)
 
-        color = self.request.GET.get('color')
-        if color:
-            qs = qs.filter(color_id=color)
-
         return qs
 
 

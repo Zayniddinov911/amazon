@@ -49,9 +49,12 @@
     <div class="sidenav">
         <p style="margin-left: 30px; margin-top: 10px;"><b>Categories</b></p>
         {% for category in categories %}
-            <a href="?cat={{ category.pk }}" style="font-size: 14px;">{{ category }}</a>
+            <a href="?cat={{ category.pk }}" style="font-size: 14px;" onclick="getParamSearch('cat', {{ category.pk }})">{{ category }}</a>
         {% endfor %}
-         <p style="margin-left: 30px; margin-top: 10px;"><b>Price</b></p>
+         <p style="margin-left: 30px; margin-top: 10px;"><b>Size</b></p>
+        {% for s in size %}
+            <a href="?size={{ s.pk }}" style="font-size: 14px;" onclick="getParamSearch('size', {{ s.pk }})">{{ s }}</a>
+        {% endfor %}
     </div>
 
     <div class="container">
@@ -77,5 +80,19 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        function getParamSearch(name, value) {
+            let param = new URLSearchParams(window.location.search);
+            if (param.has(name) && param.get(name) == value) {
+                param.delete(name);
+            } else {
+                param.set(name, value);
+            }
+            window.location.search = param.toString()
+        }
+    </script>
 {% endblock %}
 

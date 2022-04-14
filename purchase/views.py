@@ -1,18 +1,28 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import WishlistModel
 from django.contrib.auth.decorators import login_required
-from real_amazon.product.models import ProductModel
+# from real_amazon.product.models import ProductModel
 from django.views.generic import ListView
 
+from product.models import ProductModel
 
-class WishlistView(ListView):
-    template_name = 'main/wishlist.html'
+
+def update_cart(request, pk):
+    product = get_object_or_404(ProductModel.objects.all().filter(id=pk))
+    cart = request.session.get('cart', [])
+    if pk in cart:
+        cart.remove(pk)
+    else:
+        cart.append(pk)
+
+    request.session['cart'] = cart
+
+    return redirect(request.GET.get('next', '/'))
+
+
+class CartListView(ListView):
+    template_name = 'main/shopping_cart.html'
 
     def get_queryset(self):
-        return ProductModel.objects.all().filter(wishlist__user_id=self.request.user)
+        cart = self.request.session.get('cart', [])
+        return ProductModel.get_cart_info(cart)
 
-
-@login_required
-def update_wishlist(request, pk):
-    product = get_object_or_404(ProductModel.objects.all().filter(id=pk))
-    wishlist = WishlistView.add_to_delete(request)
