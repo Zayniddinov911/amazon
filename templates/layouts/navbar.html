@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load static %}
-
+{% load extra %}
 
 <nav class="navbar navbar-expand-lg" style="height: 65px; background: black;" id="myBtn">
     <a class="navbar-brand" href="{% url 'products:home' %}">
@@ -76,8 +76,23 @@
                 <a class="nav-link" href=""
                    style="color: white; font-size: 12px;">{% trans 'Returns ' %}<br><strong>& {% trans 'Orders' %}</strong></a>
             </li>
-            <li class="nav-item mt-1 ml-3">
-                <a class="nav-link bi bi-bag-plus" href="{% url 'product:shop_cart' %}">
+            <li class="nav-item ml-5">
+                <a class="nav-link" href="{% url 'product:shop_cart' %}">
+                        {% get_cart_info request as cart_info %}
+                    <img src='/media/shop.png' alt='logo here' style='width:50px; height: 50px;'>
+                    <span class='d-flex align-items-center justify-content-center' style='font-size: 
+                    .8rem;
+                    position: absolute;
+                    top: 15px;
+                    right: 44px;
+                    width: 15px;
+                    height: 15px;
+                    color: #fff;
+                    background-color: #418deb;
+                    border-radius: 50%;' 
+                    >
+                        {{cart_info.0}}
+                    </span>
                 </a>
             </li>
         </ul>
