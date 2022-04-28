@@ -24,10 +24,11 @@
                                         <a class="nav-link dropdown-toggle text-black-50" href="#" id="navbarDropdown"
                                            role="button"
                                            data-toggle="dropdown">
-                                            <span>{% trans 'All' %}</span>
+                                            <span>All</span>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             {% for obj in object_list %}
+                                                
                                                 <a class="dropdown-item" href="{% url 'products:product' %}"
                                                    style="font-size: 12px;">{{ obj.name }}</a>
                                             {% endfor %}
@@ -36,8 +37,7 @@
                                 </span>
                         </div>
                         <form action="{% url 'products:product' %}">
-                            <input name="q" value="{{ request.GET.q }}" type="search" class="form-control" size="120"
-                                   placeholder="">
+                            <input name="q" value="{{ request.GET.q }}" type="search" class="form-control" size="120">
                             <button class="btn btn-outline-success bi bi-search"
                                     style="background: orange; height: 38px;"></button>
                         </form>
@@ -54,7 +54,7 @@
                     {% get_available_languages as all_lan %}
                     {% for lan in all_lan %}
                         {% if lan.0 != current_lan %}
-                            <a class="dropdown-item" href="/{{ lan.0 }}/">
+                            <a class="dropdown-item" href="/{{ lan.0 }}/{{ request.path|slice:'4:'}}">
                                 {{ lan.0 }}
                             </a>
                         {% endif %}
@@ -69,22 +69,21 @@
                     {% else %}
                         {% trans 'Sign in' %}
                     {% endif %}
-                    <br><strong>{% trans 'Accounts & Lists' %}</strong></a>
-                {{ request.customer }}
+                    <br><strong>{% trans 'Accounts' %}</strong></a>
             </li>
             <li class="nav-item mt-1 ml-3">
                 <a class="nav-link" href=""
-                   style="color: white; font-size: 12px;">{% trans 'Returns ' %}<br><strong>& {% trans 'Orders' %}</strong></a>
+                   style="color: white; font-size: 12px; margin-top: 10px;"><strong>{% trans 'Orders' %}</strong></a>
             </li>
-            <li class="nav-item ml-5">
+            <li class="nav-item ">
                 <a class="nav-link" href="{% url 'product:shop_cart' %}">
                         {% get_cart_info request as cart_info %}
-                    <img src='/media/shop.png' alt='logo here' style='width:50px; height: 50px;'>
+                    <img src='/media/shop.png' alt='logo here' style='width: 50px; height: 50px;'>
                     <span class='d-flex align-items-center justify-content-center' style='font-size: 
                     .8rem;
-                    position: absolute;
+                    position: fixed;
                     top: 15px;
-                    right: 44px;
+                    right: 148px;
                     width: 15px;
                     height: 15px;
                     color: #fff;
@@ -119,21 +118,21 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="navbar-nav" id="hello">
+    <ul class="navbar-nav" id="hello" style="font-size: 15px;">
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; font-size: 15px;">{% trans 'Todays deals' %}</a>
+            <a class="nav-link text-white" href="#" >{% trans 'Todays deals' %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; font-size: 15px;">{% trans 'Customer Service' %}</a>
+            <a class="nav-link text-white" href="#" >{% trans 'Service' %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; font-size: 15px;">{% trans 'Registry' %}</a>
+            <a class="nav-link text-white" href="#" >{% trans 'Registry' %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; font-size: 15px;">{% trans 'Gift Cards' %}</a>
+            <a class="nav-link text-white" href="#" >{% trans 'Gift Cards' %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white; font-size: 15px;">{% trans 'Sell' %}</a>
+            <a class="nav-link text-white" href="#" >{% trans 'Sell' %}</a>
         </li>
     </ul>
 </nav>

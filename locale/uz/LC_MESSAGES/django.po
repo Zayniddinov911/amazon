@@ -1358,7 +1358,7 @@ msgstr "qaytim"
 
 #: templates/layouts/navbar.html:74
 msgid "Orders"
-msgstr "Buyurtmalar"
+msgstr "Buyurtma"
 
 #: templates/layouts/navbar.html:86
 msgid "Home"
