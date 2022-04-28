@@ -37,9 +37,12 @@ class CheckoutView(LoginRequiredMixin, CreateView):
         return redirect(self.get_success_url())
 
     def get_context_data(self, **kwargs):
-        content = super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         cart = self.request.session.get('cart', [])
-        context['product'] = ProductModel.get_cart_info()
+        context['product'] = ProductModel.get_cart_info(cart)
+        
+        if hasattr(self.request.user, 'customer'):
+            context['customer'] = self.request.user.customer
 
         return context
 
@@ -48,4 +51,4 @@ class OrderHistoryView(LoginRequiredMixin, ListView):
     template_name = 'main/o_history.html'
 
     def get_queryset(self):
-        return self.request.customer.orders.all()
+        return self.request.user.orders.all()

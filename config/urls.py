@@ -11,6 +11,8 @@ urlpatterns = i18n_patterns(
     path('', include('customer.urls')),
     path('', include('product.urls')),
     path('', include('purchase.urls')),
+    path('', include('order.urls')),
+    
 )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
