@@ -72,7 +72,7 @@
                     <br><strong>{% trans 'Accounts' %}</strong></a>
             </li>
             <li class="nav-item mt-1 ml-3">
-                <a class="nav-link" href=""
+                <a class="nav-link" href="{% url 'order:history' %}"
                    style="color: white; font-size: 12px; margin-top: 10px;"><strong>{% trans 'Orders' %}</strong></a>
             </li>
             <li class="nav-item ">
@@ -81,7 +81,7 @@
                     <img src='/media/shop.png' alt='logo here' style='width: 50px; height: 50px;'>
                     <span class='d-flex align-items-center justify-content-center' style='font-size: 
                     .8rem;
-                    position: fixed;
+                    position: absolute;
                     top: 15px;
                     right: 148px;
                     width: 15px;

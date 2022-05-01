@@ -24,10 +24,8 @@ class CheckoutView(LoginRequiredMixin, CreateView):
         product = ProductModel.get_cart_info(cart)
 
         form.instance.customer = self.request.customer
-        # form.instance.price = product.aggregate(
-        #     Sum('')
-        # )
-
+        # form.instance.products = product
+        
         order = form.save()
 
         order.product.set(product)

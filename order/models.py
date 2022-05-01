@@ -30,7 +30,7 @@ class OrderModel(models.Model):
     
     
     def __str__(self):
-        return self.full_name
+        return f'{self.full_name}'
     
     class Meta:
         verbose_name = 'order'

@@ -22,10 +22,6 @@ class ProductView(ListView):
         context['size'] = SizeModel.objects.all()
         context['color'] = ColorModel.objects.all()
 
-        context['min_price'], context['max_price'] = ProductModel.objects.aggregate(
-            Min('discount_price'),
-            Max('discount_price')).values()
-
         return context
 
     def get_queryset(self):
