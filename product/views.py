@@ -20,7 +20,7 @@ class ProductView(ListView):
         context = super(ProductView, self, *args, **kwargs).get_context_data()
         context['categories'] = CategoryModel.objects.all()
         context['size'] = SizeModel.objects.all()
-        context['color'] = ColorModel.objects.all()
+        # context['color'] = ColorModel.objects.all()
 
         return context
 
@@ -51,3 +51,7 @@ class ProductDetailView(DetailView):
 class SearchResultView(ListView):
     template_name = 'main/search_result.html'
     model = ProductModel
+
+
+class Maintenance(TemplateView):
+    template_name = 'main/service.html'

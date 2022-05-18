@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-11 08:37+0500\n"
+"POT-Creation-Date: 2022-05-18 11:26+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: customer/models.py:7
+#: customer/models.py:8 order/models.py:18
 msgid "email"
 msgstr ""
 
-#: customer/models.py:8
+#: customer/models.py:9
 msgid "phone"
 msgstr ""
 
-#: customer/models.py:9
+#: customer/models.py:10 order/models.py:19
 msgid "address"
 msgstr ""
 
-#: customer/models.py:10
+#: customer/models.py:11 order/models.py:22
 msgid "zip code"
 msgstr ""
 
-#: customer/models.py:11
+#: customer/models.py:12
 msgid "Bank Card"
 msgstr ""
 
@@ -1254,17 +1254,53 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+#: order/models.py:13
+msgid "customer"
+msgstr ""
+
+#: order/models.py:17
+msgid "full name"
+msgstr ""
+
+#: order/models.py:20
+msgid "city"
+msgstr ""
+
+#: order/models.py:21 product/models.py:115
+msgid "country"
+msgstr ""
+
+#: order/models.py:23
+msgid "verbose_name"
+msgstr ""
+
+#: order/models.py:24
+msgid "card number"
+msgstr ""
+
+#: order/models.py:25
+msgid "expiration month"
+msgstr ""
+
+#: order/models.py:26
+msgid "expiration year"
+msgstr ""
+
+#: order/models.py:27
+msgid "CVV"
+msgstr ""
+
 #: product/models.py:7 product/models.py:20 product/models.py:44
-#: product/models.py:96
+#: product/models.py:56 product/models.py:112
 msgid "name"
 msgstr ""
 
-#: product/models.py:8 product/models.py:45
+#: product/models.py:8 product/models.py:57
 msgid "image"
 msgstr ""
 
 #: product/models.py:9 product/models.py:21 product/models.py:33
-#: product/models.py:70 product/models.py:98
+#: product/models.py:45 product/models.py:81 product/models.py:114
 msgid "created at"
 msgstr ""
 
@@ -1272,118 +1308,114 @@ msgstr ""
 msgid "code"
 msgstr ""
 
-#: product/models.py:46
+#: product/models.py:58
 msgid "price"
 msgstr ""
 
-#: product/models.py:47
+#: product/models.py:59
 msgid "discount price"
 msgstr ""
 
-#: product/models.py:48
+#: product/models.py:60
 msgid "discount"
 msgstr ""
 
-#: product/models.py:49
+#: product/models.py:61
 msgid "short description"
 msgstr ""
 
-#: product/models.py:50
+#: product/models.py:62
 msgid "long description"
 msgstr ""
 
-#: product/models.py:51
+#: product/models.py:63
 msgid "is active"
 msgstr ""
 
-#: product/models.py:56
+#: product/models.py:68
 msgid "category"
 msgstr ""
 
-#: product/models.py:61
+#: product/models.py:73
 msgid "color"
 msgstr ""
 
-#: product/models.py:66
+#: product/models.py:78
 msgid "size"
 msgstr ""
 
-#: product/models.py:94
+#: product/models.py:110
 msgid "review"
 msgstr ""
 
-#: product/models.py:97
+#: product/models.py:113
 msgid "comment"
-msgstr ""
-
-#: product/models.py:99
-msgid "country"
-msgstr ""
-
-#: purchase/models.py:16
-msgid "user"
-msgstr ""
-
-#: purchase/models.py:17 purchase/models.py:23
-msgid "wishlist"
-msgstr ""
-
-#: purchase/models.py:22
-msgid "product"
 msgstr ""
 
 #: templates/layouts/navbar.html:16
 msgid "Deliver to "
 msgstr "Jonatish"
 
-#: templates/layouts/navbar.html:27
-msgid "All"
-msgstr "Umumiy"
-
-#: templates/layouts/navbar.html:64
+#: templates/layouts/navbar.html:66
 msgid "Hello"
 msgstr "Salom"
 
-#: templates/layouts/navbar.html:68
+#: templates/layouts/navbar.html:70 templates/layouts/navbar.html:110
 msgid "Sign in"
 msgstr "Kirish"
 
-#: templates/layouts/navbar.html:70
-msgid "Accounts & Lists"
+#: templates/layouts/navbar.html:72
+#, fuzzy
+#| msgid "Accounts & Lists"
+msgid "Accounts"
 msgstr "royhat"
 
-#: templates/layouts/navbar.html:74
-msgid "Returns "
-msgstr "qaytim"
-
-#: templates/layouts/navbar.html:74
+#: templates/layouts/navbar.html:76
 msgid "Orders"
 msgstr "Buyurtma"
 
-#: templates/layouts/navbar.html:86
+#: templates/layouts/navbar.html:103
 msgid "Home"
 msgstr "Bosh sahifa"
 
-#: templates/layouts/navbar.html:90
+#: templates/layouts/navbar.html:108
 msgid "Sign Out"
 msgstr "Chiqish"
 
-#: templates/layouts/navbar.html:98
+#: templates/layouts/navbar.html:113
+#, fuzzy
+#| msgid "Registry"
+msgid "Register"
+msgstr "reestr"
+
+#: templates/layouts/navbar.html:123
 msgid "Todays deals"
 msgstr "Kunning bitimlari"
 
-#: templates/layouts/navbar.html:101
-msgid "Customer Service"
+#: templates/layouts/navbar.html:126
+#, fuzzy
+#| msgid "Customer Service"
+msgid "Service"
 msgstr "Mijoz xizmati"
 
-#: templates/layouts/navbar.html:104
+#: templates/layouts/navbar.html:129
 msgid "Registry"
 msgstr "reestr"
 
-#: templates/layouts/navbar.html:107
+#: templates/layouts/navbar.html:132
 msgid "Gift Cards"
 msgstr "Sovga kartalari"
 
-#: templates/layouts/navbar.html:110
+#: templates/layouts/navbar.html:135
 msgid "Sell"
 msgstr "Soting!"
+
+#: templates/main/home.html:17
+msgid "Shop now"
+msgstr "Sotib olish"
+
+#~ msgid "All"
+#~ msgstr "Umumiy"
+
+#~ msgid "Returns "
+#~ msgstr "qaytim"

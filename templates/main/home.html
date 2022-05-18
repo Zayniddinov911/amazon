@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
     <div class="container">
@@ -13,7 +14,7 @@
                         <img src="{{ obj.image.url }}" alt="category image here" style="width: 250px; height: 300px;">
                     </div>
                     <div>
-                        <a href="{% url 'products:product' %}" style="font-size: 13px;" class="a-href">Shop now</a>
+                        <a href="{% url 'products:product' %}" style="font-size: 13px;" class="a-href">{% trans 'Shop now' %}</a>
                     </div>
                 </div>
             {% endfor %}
