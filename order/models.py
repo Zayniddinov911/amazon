@@ -1,5 +1,6 @@
 import email
 from operator import mod
+from statistics import mode
 from tabnanny import verbose
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -35,4 +36,4 @@ class OrderModel(models.Model):
     class Meta:
         verbose_name = 'order'
         verbose_name_plural = 'orders'
-            
+

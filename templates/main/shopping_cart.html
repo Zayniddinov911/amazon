@@ -8,7 +8,9 @@
         <div style="width: 1200px; height: 270px; background: white;">
             <div class='d-flex justify-content-between'>
                 <div class='image-fluid mt-4'>
-                    <img src='{{object.image.url}}' style='width: 180px; height: 180px;'>
+                    <a href='{%  url 'products:details' pk=object.pk %}'>
+                        <img src='{{object.image.url}}' style='width: 180px; height: 180px;'>
+                    </a>
                 </div>
                 <div style='margin-right: 150px; margin-top: 50px;'>
                     <p class='text-center'>{{ object.name }}</p>
