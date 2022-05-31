@@ -12,10 +12,7 @@ class CustomerModel(AbstractUser):
     card = models.PositiveIntegerField(default=True, verbose_name=_('Bank Card'))
 
     def __str__(self):
-        return self.fio
-
-    def fio(self):
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.username} {self.email}'
     
     class Meta:
         verbose_name = 'customer'

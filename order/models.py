@@ -20,12 +20,12 @@ class OrderModel(models.Model):
     address = models.CharField(max_length=255, verbose_name=_('address'))
     City = models.CharField(max_length=50, verbose_name=_('city'))
     Country = models.CharField(max_length=50, verbose_name=_('country'))
-    zip = models.PositiveIntegerField(max_length=6, verbose_name=_('zip code'))
+    zip = models.PositiveIntegerField(verbose_name=_('zip code'))
     name_on_card = models.CharField(max_length=70, verbose_name=_('verbose_name'))
-    card_number = models.PositiveIntegerField(max_length=16, verbose_name=_('card number'))
+    card_number = models.PositiveIntegerField(verbose_name=_('card number'))
     Exp_month = models.DecimalField(max_digits=5, decimal_places=5, verbose_name=_('expiration month'))
-    exp_year = models.PositiveIntegerField(max_length=4, verbose_name=_('expiration year'))
-    CVV = models.PositiveIntegerField(max_length=5, verbose_name=_('CVV'))
+    exp_year = models.PositiveIntegerField(verbose_name=_('expiration year'))
+    CVV = models.PositiveIntegerField(verbose_name=_('CVV'))
     
     created_at = models.DateTimeField(auto_now_add=True)
     
