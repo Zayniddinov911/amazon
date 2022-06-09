@@ -49,7 +49,7 @@ class LoginView(View):
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if not user is None:
                 login(request, user)
-                print('asdasdasdas')
+                # print('asdasdasdas')
 
                 # form.add_error('password', 'Incorrect Login or Password!')
                 return redirect('products:home')

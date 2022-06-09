@@ -1,7 +1,3 @@
-import email
-from operator import mod
-from statistics import mode
-from tabnanny import verbose
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from product.models import ProductModel
@@ -31,7 +27,7 @@ class OrderModel(models.Model):
     
     
     def __str__(self):
-        return f'{self.full_name}'
+        return self.full_name
     
     class Meta:
         verbose_name = 'order'

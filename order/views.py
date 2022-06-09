@@ -35,18 +35,16 @@ class CheckoutView(LoginRequiredMixin, CreateView):
 
         return redirect(self.get_success_url())
     
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = OrderModelForm(self.request.POST)
-        print(form)
         if form.is_valid():
             order = form.save(commit=True)
             order.save()
             
-            return redirect(self.get_success_url())            
+            return redirect(self.get_success_url())
         
-        return super().post(request, *args, **kwargs)
-												
-											
+        return super().post(request)
+					
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         cart = self.request.session.get('cart', [])
